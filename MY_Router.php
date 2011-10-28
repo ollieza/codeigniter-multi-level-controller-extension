@@ -4,7 +4,7 @@
  * MY_Router Class *
  * An extension to the core router class to allow controllers to be in multi-level directories.
  *
- * @package   autoresponder
+ * @package   Router
  * @version   1.0
  * @author    Damien K.
  * @copyright Copyright (c) 2010, Ollie Rattue
@@ -12,8 +12,8 @@
  * @link      https://github.com/ollierattue/codeigniter-multi-level-controller-extension
  */
 
-class MY_Router extends CI_Router
-{
+class MY_Router extends CI_Router {
+	
     // --------------------------------------------------------------------
 
     /**
@@ -44,16 +44,19 @@ class MY_Router extends CI_Router
         {
             // @edit: Support multi-level sub-folders
             $dir = '';
-            do
+            
+			do
             {
                 if (strlen($dir) > 0)
                 {
                     $dir .= '/';
                 }
-                $dir .= $segments[0];
+                
+				$dir .= $segments[0];
                 $segments = array_slice($segments, 1);
             } while (count($segments) > 0 && is_dir(APPPATH.'controllers/'.$dir.'/'.$segments[0]));
-            // Set the directory and remove it from the segment array
+           
+ 			// Set the directory and remove it from the segment array
             $this->set_directory($dir);
             // @edit: END
 
@@ -67,7 +70,7 @@ class MY_Router extends CI_Router
             if (count($segments) > 0)
             {
                 // Does the requested controller exist in the sub-folder?
-                if ( ! file_exists(APPPATH.'controllers/'.$this->fetch_directory().$segments[0].EXT))
+                if (!file_exists(APPPATH.'controllers/'.$this->fetch_directory().$segments[0].EXT))
                 {
                     // show_404($this->fetch_directory().$segments[0]);
                     // @edit: Fix a "bug" where show_404 is called before all the core classes are loaded
@@ -92,7 +95,7 @@ class MY_Router extends CI_Router
                 }
 
                 // Does the default controller exist in the sub-folder?
-                if ( ! file_exists(APPPATH.'controllers/'.$this->fetch_directory().$this->default_controller.EXT))
+                if (!file_exists(APPPATH.'controllers/'.$this->fetch_directory().$this->default_controller.EXT))
                 {
                     $this->directory = '';
                     return array();
@@ -102,7 +105,6 @@ class MY_Router extends CI_Router
 
             return $segments;
         }
-
 
         // If we've gotten this far it means that the URI does not correlate to a valid
         // controller class.  We will now see if there is an override
@@ -115,7 +117,6 @@ class MY_Router extends CI_Router
 
             return $x;
         }
-
 
         // Nothing else to do at this point but show a 404
         show_404($segments[0]);
@@ -137,4 +138,5 @@ class MY_Router extends CI_Router
         $this->directory = str_replace(array('.'), '', $dir).'/'; // @edit: Preserve '/'
     }
 
+    // --------------------------------------------------------------------
 }
