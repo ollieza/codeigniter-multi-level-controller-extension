@@ -1,4 +1,4 @@
-Autoresponder library - Fully functional - CI 2.0 Reactor compatible
+Multi level controllers extension - Production ready - CI 2.1.0 compatible
 ====================================================================
 
 An extension to the core router class to allow controllers to be in multi-level directories.
@@ -6,7 +6,7 @@ An extension to the core router class to allow controllers to be in multi-level 
 Notes
 -----
 
-This extension was written by Damien K. by the code appeared to have no home.
+This original extension was written by Damien K. but the code appeared to have no home. 
 
 Extra
 -----
