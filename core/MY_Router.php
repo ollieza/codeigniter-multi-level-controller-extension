@@ -7,9 +7,7 @@
  * @package   Router
  * @version   1.0
  * @author    Damien K.
- * @copyright Copyright (c) 2010, Ollie Rattue
  * @license   http://www.opensource.org/licenses/mit-license.php
- * @link      https://github.com/ollierattue/codeigniter-multi-level-controller-extension
  */
 
 class MY_Router extends CI_Router {
